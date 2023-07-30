@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To-Do </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 40px auto;
+        } 
+
+        
+        .input-group {
+            margin-bottom: 30px;
+        }
+
+        .input-group input[type="text"] {
+            width: 100%;
+            padding: 30px;
+            font-size: 30px;
+        }
+
+        .input-group button {
+            padding: 30px 40px;
+            font-size: 28 px;
+        }
+
+        .task-list {
+            list-style: none;
+            padding: 10;
+        }
+
+        .task-list li {
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+
+        .task-list li input[type="checkbox"] {
+            margin-right: 30px;
+        }
+
+        .task-list li button {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <
+        <h2>  TO-DO LIST </h2>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="Enter a task">
+            <button onclick="addTask()">ADD YOUR TASK</button>
+        </div>
+        <ul id="taskList" class="task-list"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById("taskInput");
+            var taskList = document.getElementById("taskList");
+
+            if (taskInput.value.trim() === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            var li = document.createElement("li");
+            li.innerHTML = '<input type="checkbox">' + taskInput.value + '<button onclick="deleteTask(this)">Delete</button>';
+            taskList.appendChild(li);
+
+            taskInput.value = "";
+        }
+
+        function deleteTask(btn) {
+            var li = btn.parentNode;
+            var taskList = document.getElementById("taskList");
+            taskList.removeChild(li);
+        }
+    </script>
+</body>
+</html>
